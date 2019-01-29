@@ -2,7 +2,10 @@ class RenderPlantUML extends HTMLElement {
   constructor() {
     super();
 
-    fetch('http://www.plantuml.com/plantuml/svg/oybCJiqhJWK0').then(response =>
+    const publicDemoServerAddress = 'http://www.plantuml.com/plantuml';
+    const plantUmlServerAddress = this.getAttribute('server') || publicDemoServerAddress;
+
+    fetch(`${plantUmlServerAddress}/svg/oybCJiqhJWK0`).then(response =>
       response.text().then(svgContent => {
         const shadowRoot = this.attachShadow({ mode: 'open' });
 
