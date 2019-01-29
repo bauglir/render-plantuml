@@ -8,6 +8,8 @@ class RenderPlantUML extends HTMLElement {
     const plantUmlServerAddress = this.getAttribute('server') || publicDemoServerAddress;
     const renderMode = (this.getAttribute('renderMode') || 'svg').toLowerCase();
 
+    const payload = btoa(this.innerText.trim() || 'license');
+
     this.renderedContainer = this.attachShadow({ mode: 'open' });
 
     const styleSheet = document.createElement('style');
@@ -22,15 +24,17 @@ class RenderPlantUML extends HTMLElement {
 
       this.renderedContainer.appendChild(errorMessage);
     } else {
-      fetch(`${plantUmlServerAddress}/${renderMode}/oybCJiqhJWK0`).then(response => {
-        switch (renderMode) {
-          case 'svg':
-            this.renderAsSvg(response);
-            break;
-          default:
-            this.renderAsPng(response);
+      fetch(`${plantUmlServerAddress}/${renderMode}/-base64-${payload}`).then(
+        response => {
+          switch (renderMode) {
+            case 'svg':
+              this.renderAsSvg(response);
+              break;
+            default:
+              this.renderAsPng(response);
+          }
         }
-      });
+      );
     }
   }
 
