@@ -3,7 +3,7 @@ class RenderPlantUML extends HTMLElement {
     super();
 
     const publicDemoServerAddress = 'http://www.plantuml.com/plantuml';
-    const validRenderModes = [ 'png', 'svg' ];
+    const validRenderModes = [ 'png', 'svg', 'txt' ];
 
     const plantUmlServerAddress = this.getAttribute('server') || publicDemoServerAddress;
     const renderMode = (this.getAttribute('renderMode') || 'svg').toLowerCase();
@@ -30,6 +30,9 @@ class RenderPlantUML extends HTMLElement {
             case 'svg':
               this.renderAsSvg(response);
               break;
+            case 'txt':
+              this.renderAsTxt(response);
+              break;
             default:
               this.renderAsPng(response);
           }
@@ -50,6 +53,14 @@ class RenderPlantUML extends HTMLElement {
     response.text().then(svgContent => this.renderedContainer.appendChild(
         document.createRange().createContextualFragment(svgContent)
     ));
+  }
+
+  renderAsTxt(response) {
+    response.text().then(textContent => {
+      const preTag = document.createElement('pre');
+      preTag.innerText = textContent;
+      this.renderedContainer.appendChild(preTag);
+    });
   }
 }
 
