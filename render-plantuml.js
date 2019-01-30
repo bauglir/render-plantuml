@@ -8,7 +8,18 @@ class RenderPlantUMLElement extends HTMLElement {
     const plantUmlServerAddress = this.getAttribute('server') || publicDemoServerAddress;
     const renderMode = (this.getAttribute('renderMode') || 'svg').toLowerCase();
 
-    const payload = btoa(this.innerText.trim() || 'license');
+    const diagramDescription = this.innerText.trim() || 'license';
+
+    // Convert the diagram description into a hex-encoded string for easier
+    // inclusion in URIs. Other encodings are possible (deflate, base64), but
+    // those either require additional dependencies or have caused issues with
+    // certain diagram definitions (e.g. with multiple includes)
+    const payload = diagramDescription.split('').map(
+      // Make sure the stringified hex representation is always at least 2
+      // digits long, otherwise the encoding will not be interpreted correctly
+      // by the server
+      char => `0${char.codePointAt(0).toString(16)}`.slice(-2)
+    ).join('');
 
     this.renderedContainer = this.attachShadow({ mode: 'open' });
 
@@ -24,7 +35,7 @@ class RenderPlantUMLElement extends HTMLElement {
 
       this.renderedContainer.appendChild(errorMessage);
     } else {
-      fetch(`${plantUmlServerAddress}/${renderMode}/-base64-${payload}`).then(
+      fetch(`${plantUmlServerAddress}/${renderMode}/-hex-${payload}`).then(
         response => {
           switch (renderMode) {
             case 'svg':
