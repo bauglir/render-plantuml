@@ -1,4 +1,4 @@
-class RenderPlantUML extends HTMLElement {
+class RenderPlantUMLElement extends HTMLElement {
   constructor() {
     super();
 
@@ -64,4 +64,6 @@ class RenderPlantUML extends HTMLElement {
   }
 }
 
-window.customElements.define('render-plantuml', RenderPlantUML);
+export const enableElement = () => {
+  window.customElements.define('render-plantuml', RenderPlantUMLElement);
+};
