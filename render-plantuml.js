@@ -86,3 +86,4 @@ class RenderPlantUMLElement extends HTMLElement {
 export const enableElement = () => {
   window.customElements.define('render-plantuml', RenderPlantUMLElement);
 };
+export default enableElement;
