@@ -3,7 +3,7 @@ class RenderPlantUMLElement extends HTMLElement {
     super();
 
     const publicDemoServerAddress = 'http://www.plantuml.com/plantuml';
-    const validRenderModes = [ 'png', 'svg', 'txt' ];
+    const validRenderModes = [ 'img', 'png', 'svg', 'txt' ];
 
     const plantUmlServerAddress = this.getAttribute('server') || publicDemoServerAddress;
     const renderMode = (this.getAttribute('renderMode') || 'svg').toLowerCase();
