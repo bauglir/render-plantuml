@@ -55,3 +55,6 @@ escaped or be wrapped in a comment.
              diagrams. Defaults to the publicly available demo server at
              http://plantuml.com/plantuml. Note that this server does not use
              HTTPS!
+* `src` - An absolute URI to a file containing a PlantUML description. The file
+          needs to be available to the `server` that is used. Defining a `src`
+          takes precedence over any PlantUML defined within the element!

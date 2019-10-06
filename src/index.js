@@ -5,18 +5,24 @@ class RenderPlantUMLElement extends HTMLElement {
     const publicDemoServerAddress = 'http://www.plantuml.com/plantuml';
     const validRenderModes = [ 'img', 'png', 'svg', 'txt' ];
 
+    const externalDiagramSource = this.getAttribute('src');
     const plantUmlServerAddress = this.getAttribute('server') || publicDemoServerAddress;
     const renderMode = (this.getAttribute('renderMode') || 'svg').toLowerCase();
 
-    // Looping over all child nodes allows contents of the tag to be wrapped in
-    // comments. This allow the use of unescaped characters that have semantic
-    // meaning in HTML (e.g. '<'). These, if left unescaped, would otherwise
-    // cause browsers to try and render the UML definition
-    const diagramDescription = Array
-      .from(this.childNodes)
-      .map(node => node.textContent)
-      .join('')
-      .trim() || 'license';
+    let diagramDescription = '';
+    if (externalDiagramSource) {
+      diagramDescription = `!include ${externalDiagramSource}`;
+    } else {
+      // Looping over all child nodes allows contents of the tag to be wrapped
+      // in comments. This allow the use of unescaped characters that have
+      // semantic meaning in HTML (e.g. '<'). These, if left unescaped, would
+      // otherwise cause browsers to try and render the UML definition
+      diagramDescription = Array
+        .from(this.childNodes)
+        .map(node => node.textContent)
+        .join('')
+        .trim() || 'license';
+    }
 
     // Convert the diagram description into a hex-encoded string for easier
     // inclusion in URIs. Other encodings are possible (deflate, base64), but
