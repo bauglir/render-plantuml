@@ -1,5 +1,7 @@
 # `render-plantuml` Web Component
 
+[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/render-plantuml)
+
 A web component capable of rendering PlantUML diagrams using an external
 server.
 
