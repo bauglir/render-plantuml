@@ -9,7 +9,7 @@ Enable the element on any web page using code similar to
 
 ```html
 <script type="module">
-  import enableElement from "./render-plantuml.js"
+  import enableElement from 'https://cdn.pika.dev/render-plantuml';
   enableElement();
 </script>
 ```
