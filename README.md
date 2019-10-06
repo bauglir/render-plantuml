@@ -58,3 +58,5 @@ escaped or be wrapped in a comment.
 * `src` - An absolute URI to a file containing a PlantUML description. The file
           needs to be available to the `server` that is used. Defining a `src`
           takes precedence over any PlantUML defined within the element!
+          Relative URIs are allowed and treated as indicating files located on
+          the active origin.

@@ -11,7 +11,12 @@ class RenderPlantUMLElement extends HTMLElement {
 
     let diagramDescription = '';
     if (externalDiagramSource) {
-      diagramDescription = `!include ${externalDiagramSource}`;
+      // Force the `externalDiagramSource` to an absolute URI using the
+      // location of the page rendering the diagram as the base for relative
+      // URIs. This makes using external files relative to a main document less
+      // cumbersome
+      const absoluteUri = new URL(externalDiagramSource, document.location);
+      diagramDescription = `!include ${absoluteUri}`;
     } else {
       // Looping over all child nodes allows contents of the tag to be wrapped
       // in comments. This allow the use of unescaped characters that have
