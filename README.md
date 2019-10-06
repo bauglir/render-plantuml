@@ -22,9 +22,8 @@ Enable the element on any web page using code similar to
 ```
 <custom-element-demo>
   <template>
-    <script src="../webcomponentsjs/webcomponents-lite.js"></script>
     <script type="module">
-      import enableElement from './dist-web/index.min.js';
+      import enableElement from 'https://cdn.pika.dev/render-plantuml';
       enableElement();
     </script>
     <next-code-block></next-code-block>
