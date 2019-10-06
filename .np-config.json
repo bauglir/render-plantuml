@@ -1,0 +1,5 @@
+{
+  "contents": "./pkg/",
+  "tests": false,
+  "yarn": false
+}

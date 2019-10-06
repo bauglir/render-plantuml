@@ -9,6 +9,7 @@
   },
   "dependencies": {},
   "devDependencies": {
+    "@pika/cli": "0.2.0",
     "@pika/pack": "0.5.0",
     "@pika/plugin-build-web": "0.6.1",
     "@pika/plugin-standard-pkg": "0.6.1",
@@ -28,7 +29,9 @@
   },
   "scripts": {
     "build": "pika build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "release": "pika publish",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "version": "npm run build"
   },
   "@pika/pack": {
     "pipeline": [
