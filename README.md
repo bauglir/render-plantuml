@@ -18,6 +18,20 @@ Enable the element on any web page using code similar to
 
 ## Usage
 
+<!--
+```
+<custom-element-demo>
+  <template>
+    <script src="../webcomponentsjs/webcomponents-lite.js"></script>
+    <script type="module">
+      import enableElement from './dist-web/index.min.js';
+      enableElement();
+    </script>
+    <next-code-block></next-code-block>
+  </template>
+</custom-element-demo>
+```
+-->
 ```html
 <render-plantuml>
   <!--
