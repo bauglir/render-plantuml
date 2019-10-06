@@ -18,7 +18,12 @@ Enable the element on any web page using code similar to
 
 ```html
 <render-plantuml>
-  Bob -> Alice : Hello
+  <!--
+    /' The diagram definition is inside an HTML comment as it contains
+       characters (i.e. `>`) with meaning in HTML. This is not necessary in all
+       cases, but some care should be taken when using these characters '/
+    Bob -> Alice : Hello
+  -->
 </render-plantuml>
 ```
 
