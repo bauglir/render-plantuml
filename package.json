@@ -2,13 +2,17 @@
   "name": "render-plantuml",
   "version": "0.0.1",
   "description": "A web component for rendering PlantUML diagrams using an external server",
-  "main": "render-plantuml.js",
+  "main": "src/index.js",
   "author": "Joris Kraak <me@joriskraak.nl>",
   "bugs": {
     "url": "https://github.com/bauglir/render-plantuml/issues"
   },
   "dependencies": {},
-  "devDependencies": {},
+  "devDependencies": {
+    "@pika/pack": "0.5.0",
+    "@pika/plugin-build-web": "0.6.1",
+    "@pika/plugin-standard-pkg": "0.6.1"
+  },
   "homepage": "https://github.com/bauglir/render-plantuml#readme",
   "keywords": [
     "PlantUML",
@@ -21,6 +25,17 @@
     "url": "git+https://github.com/bauglir/render-plantuml.git"
   },
   "scripts": {
+    "build": "pika build",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "@pika/pack": {
+    "pipeline": [
+      [
+        "@pika/plugin-standard-pkg"
+      ],
+      [
+        "@pika/plugin-build-web"
+      ]
+    ]
   }
 }
