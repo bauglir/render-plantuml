@@ -2,7 +2,7 @@ class RenderPlantUMLElement extends HTMLElement {
   constructor() {
     super();
 
-    const publicDemoServerAddress = "http://www.plantuml.com/plantuml";
+    const publicDemoServerAddress = "https://www.plantuml.com/plantuml";
     const validRenderModes = ["img", "png", "svg", "txt"];
 
     const externalDiagramSource = this.getAttribute("src");
