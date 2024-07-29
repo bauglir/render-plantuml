@@ -59,7 +59,7 @@ class RenderPlantUMLElement extends HTMLElement {
 
       this.renderedContainer.appendChild(errorMessage);
     } else {
-      fetch(`${plantUmlServerAddress}/${renderMode}/-hex-${payload}`).then(
+      fetch(`${plantUmlServerAddress}/${renderMode}/~h${payload}`).then(
         (response) => {
           switch (renderMode) {
             case "svg":
