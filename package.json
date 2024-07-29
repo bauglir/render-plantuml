@@ -1,6 +1,6 @@
 {
   "name": "render-plantuml",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "A web component for rendering PlantUML diagrams using an external server",
   "main": "src/index.js",
   "author": "Joris Kraak <me@joriskraak.nl>",
